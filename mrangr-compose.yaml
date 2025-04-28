@@ -1,0 +1,17 @@
+services:
+  frontend:
+    image: kroszczark/mrangr-server-prod:latest
+    ports: 
+      - '8000:8000'
+    volumes:
+      - /var/runf/docker.sock:/var/run/docker.sock
+    stdin_open: true
+    tty: true    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      HOST_IP: "${HOST_IP}"
+    privileged: true 
